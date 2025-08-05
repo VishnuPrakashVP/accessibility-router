@@ -1,0 +1,13 @@
+stop_id,stop_code,stop_name,stop_lat,stop_lon,wheelchair_boarding,location_type,parent_station,platform_code
+490013767C,57023,Trafalgar Square,51.50826,-0.12734,0,0,,
+490013767D,55677,Trafalgar Square,51.50819,-0.12706,0,0,,
+9400ZZLUCHX2,,Charing Cross Underground Station,51.50817968749,-0.12589105105,0,0,940GZZLUCHX,
+940GZZLUCHX,,Charing Cross Underground Station,51.50741048616,-0.12727717497,0,1,,
+490016161S,76483,St Martin's Place,51.50985,-0.12787,0,0,,
+490013767X,74476,Trafalgar Square,51.50716,-0.12673,0,0,,
+490013766G,48121,Trafalgar Square/Charing Cross,51.50864,-0.12623,0,0,,
+490013766E,50435,Charing Cross,51.50804,-0.12649,0,0,,
+490013766K,77694,Trafalgar Square/Charing Cross,51.50801,-0.12634,0,0,,
+490013767W,52905,Trafalgar Square,51.50735,-0.1265,0,0,,
+490013766F,54289,Charing Cross,51.50816,-0.12619,0,0,,
+9400ZZLUCHX1,,Charing Cross Underground Station,51.50745055022,-0.12809691531,0,0,940GZZLUCHX,

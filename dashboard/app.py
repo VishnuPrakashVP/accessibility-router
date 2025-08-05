@@ -23,7 +23,7 @@ profile = st.sidebar.selectbox("Select profile", ["normal", "wheelchair", "elder
 # Metrics
 st.subheader(f"📌 Key Metrics for '{profile}' Profile")
 tt = travel_times[profile]
-st.metric("🕒 Origin to Destination Travel Time (min)", int(tt.iloc[0]['travel_time']))
+st.metric("🕒 Origin to Destination Travel Time (min)", int(tt.iloc[0].get('adjusted_travel_time', tt.iloc[0]['travel_time'])))
 
 accessible_column = f"{profile}_accessible"
 if accessible_column in df_compare.columns:
@@ -51,7 +51,7 @@ st.bar_chart(df_compare["category"].value_counts())
 st.subheader("📈 Travel Time Comparison Across Profiles")
 comparison_df = pd.DataFrame({
     "Profile": list(travel_times.keys()),
-    "Travel Time (min)": [int(travel_times[p].iloc[0]['travel_time']) for p in travel_times]
+    "Travel Time (min)": [int(travel_times[p].iloc[0].get('adjusted_travel_time', travel_times[p].iloc[0]['travel_time'])) for p in travel_times]
 })
 st.altair_chart(
     alt.Chart(comparison_df).mark_bar().encode(
@@ -79,10 +79,10 @@ summary_data = {
     "Time Delta (min)": []
 }
 
-normal_time = int(travel_times["normal"].iloc[0]['travel_time'])
+normal_time = int(travel_times["normal"].iloc[0].get('adjusted_travel_time', travel_times["normal"].iloc[0]['travel_time']))
 
 for p in travel_times:
-    travel_time = int(travel_times[p].iloc[0]['travel_time'])
+    travel_time = int(travel_times[p].iloc[0].get('adjusted_travel_time', travel_times[p].iloc[0]['travel_time']))
     accessible_col = f"{p}_accessible"
     accessible_count = df_compare[df_compare[accessible_col] == True].shape[0] if accessible_col in df_compare.columns else 0
     coverage = round(accessible_count / df_compare.shape[0] * 100, 2) if df_compare.shape[0] > 0 else 0
