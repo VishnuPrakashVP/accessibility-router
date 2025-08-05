@@ -1,0 +1,13 @@
+__pycache__/
+.DS_Store
+.env
+venv/
+*.pyc
+*.pyo
+*.pyd
+.vscode/
+*.zip
+*.geojson
+*.html
+outputs/
+data/

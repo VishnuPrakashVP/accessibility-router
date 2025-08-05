@@ -1,14 +1,22 @@
+# profiles.py
+
 profiles = {
+    "normal": {},  # No restrictions
+
     "wheelchair": {
-        "walk_speed": 0.5,
-        "avoid_tags": {
-            "surface": ["paving_stones"]  # May be bumpy for some wheelchair users
-        }
+        "wheelchair": "yes",
+        "incline": ["up", "down", None],
+        "surface": [
+            "asphalt", "paving_stones", "concrete", "paved"
+        ],
+        "smoothness": ["excellent", "good", "intermediate"]
     },
+
     "elderly": {
-        "walk_speed": 0.75,
-        "avoid_tags": {
-            "surface": ["paving_stones", "concrete"]  # May be uneven or hard
-        }
+        "incline": ["up", "down", None],
+        "surface": [
+            "asphalt", "paving_stones", "concrete", "paved"
+        ],
+        "smoothness": ["good", "intermediate"]
     }
 }

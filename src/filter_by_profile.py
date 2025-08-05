@@ -1,20 +1,21 @@
 def filter_by_profile(gdf, profile):
-    for key, value in profile.get("required_tags", {}).items():
-        if key in gdf.columns:
-            if isinstance(value, list):
-                gdf = gdf[gdf[key].isin(value)]
-            else:
-                gdf = gdf[gdf[key] == value]
-        else:
-            print(f"⚠️ Required tag '{key}' not found — skipping.")
+    print(f"📊 Initial path count: {len(gdf)}")
+    for key, condition in profile.items():
+        if key not in gdf.columns:
+            print(f"⚠️ Required tag '{key}' not found in data — skipping.")
+            continue
 
-    for key, value in profile.get("avoid_tags", {}).items():
-        if key in gdf.columns:
-            if isinstance(value, list):
-                gdf = gdf[~gdf[key].isin(value)]
-            else:
-                gdf = gdf[gdf[key] != value]
-        else:
-            print(f"⚠️ Avoid tag '{key}' not found — skipping.")
+        print(f"🔍 Filtering by '{key}' with condition: {condition}")
+        print(f"   Unique values in '{key}': {gdf[key].dropna().unique()}")
 
+        before = len(gdf)
+        if isinstance(condition, list):
+            gdf = gdf[gdf[key].isin(condition)]
+        else:
+            gdf = gdf[gdf[key] == condition]
+        after = len(gdf)
+
+        print(f"✅ Paths remaining after filtering by '{key}': {after} (filtered out {before - after})")
+
+    print(f"🎯 Final accessible paths: {len(gdf)}")
     return gdf
