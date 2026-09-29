@@ -14,3 +14,4 @@ data/
 r5_inputs/
 r5_inputs/osm/r5_inputs/osm/greater-london-latest.osm.pbf
 r5_inputs/osm/greater-london-latest.osm.pbf
+temp_extracted_gtfs_*/
